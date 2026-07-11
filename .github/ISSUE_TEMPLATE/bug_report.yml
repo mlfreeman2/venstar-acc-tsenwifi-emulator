@@ -14,7 +14,7 @@ body:
     attributes:
       label: Integration version
       description: Shown in HACS, or in `custom_components/venstar_acc_tsenwifi_emulator/manifest.json`
-      placeholder: "0.3.0"
+      placeholder: "0.4.0"
     validations:
       required: true
   - type: dropdown

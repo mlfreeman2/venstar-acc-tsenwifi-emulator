@@ -9,5 +9,5 @@
   "issue_tracker": "https://github.com/mlfreeman2/venstar-acc-tsenwifi-emulator/issues",
   "requirements": ["protobuf>=6.31.1,<8"],
   "single_config_entry": true,
-  "version": "0.3.0"
+  "version": "0.4.0"
 }
