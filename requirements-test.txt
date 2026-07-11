@@ -9,7 +9,7 @@
 # release for 2026.4.x exists yet, so the automated tests run against 2026.2.3.
 # The integration uses no 2026.3/2026.4-only APIs, so this is a safe floor for
 # CI; bump the PHACC pin once a 2026.4.x-matching release ships.
-pytest-homeassistant-custom-component==0.13.316
+pytest-homeassistant-custom-component==0.13.346
 
 # Integration runtime dependency (manifest requirements are not auto-installed
 # in the test environment).
