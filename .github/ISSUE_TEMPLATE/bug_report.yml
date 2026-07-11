@@ -42,6 +42,15 @@ body:
           required: true
         - label: "If HA runs in Docker, it uses `network_mode: host`"
   - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics download
+      description: |
+        In HA: Settings → Devices & Services → Venstar ACC-TSENWIFI Emulator → ⋮ → Download diagnostics.
+        Paste or attach the JSON. (This includes the sensor roster, sequence numbers, and what each
+        source entity currently reports — the first thing needed for any broadcast question.)
+      render: json
+  - type: textarea
     id: debug-log
     attributes:
       label: Debug log

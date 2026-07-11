@@ -284,7 +284,7 @@ This JSON file contains:
 
 ### Integration won't load?
 
-1. **Check Home Assistant version**: Must be 2026.4.4+. On older versions the generated protobuf code refuses to load (`VersionError` mentioning "gencode" and "runtime" versions in the log) because HA ships an older `protobuf` runtime
+1. **Check Home Assistant version**: must be 2026.4.4+ (the supported floor). On Home Assistant older than 2025.7.1 the bundled protobuf gencode refuses to load (a `VersionError` mentioning "gencode" and "runtime" versions in the log) because those releases ship an older `protobuf` runtime
 2. **Check protobuf**: Ensure `protobuf/sensor_message_pb2.py` and `protobuf/__init__.py` exist
 3. **Check logs**: Look for import errors
 4. **Reinstall**: Delete and re-copy files
@@ -313,7 +313,7 @@ Versions before 0.3.0 used the domain `venstar_translator` (developed inside the
    ```
 4. Install this integration and add it. On first load it finds the existing storage, so your MAC prefix, sensors, and sequence numbers carry over — the thermostat keeps seeing the "same" sensors with no re-pairing needed.
 
-**Caveat**: the new config entry records a freshly generated MAC prefix in its own data, but broadcasting always uses the prefix from storage, so packets are unaffected. The recorded value only matters to the companion [listener integration](https://github.com/mlfreeman2/venstar-acc-tsenwifi-listener)'s "ignore local emulated sensors" option — if you use that option on a migrated install, prefer the clean path instead.
+**Note**: the config flow records a freshly generated MAC prefix in the new config entry, but broadcasting always uses the prefix from storage, so packets are unaffected — and on first load the integration syncs the entry's recorded prefix back to the storage one. The companion [listener integration](https://github.com/mlfreeman2/venstar-acc-tsenwifi-listener)'s "ignore locally-emulated sensors" option (which reads the recorded value) therefore works on migrated installs too.
 
 ## Migration from Docker Version
 

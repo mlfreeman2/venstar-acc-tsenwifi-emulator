@@ -5,13 +5,15 @@ updates:
     schedule:
       interval: "weekly"
     ignore:
-      # Pinned to match the Home Assistant version running on all deployments.
-      # Bump this manually when those upgrade.
+      # The minimum Home Assistant version is a deliberate support floor
+      # (declared in hacs.json and requirements-dev.txt), not something to bump
+      # automatically — ignore homeassistant itself.
       - dependency-name: "homeassistant"
-      # Home Assistant hard-pins protobuf to an exact version (==6.32.0 in HA
-      # 2026.4), so ANY bump above it — major or minor — is unsatisfiable
-      # against the pinned homeassistant. Ignore protobuf entirely; HA controls
-      # this version. Revisit when the pinned HA version changes.
+      # Home Assistant hard-pins protobuf to an exact version (2026.4.x ships
+      # protobuf==6.32.0), so ANY bump above it — major or minor — is
+      # unsatisfiable against the pinned homeassistant. Ignore protobuf
+      # entirely; HA controls this version. Revisit when the pinned HA version
+      # changes.
       - dependency-name: "protobuf"
   - package-ecosystem: "github-actions"
     directory: "/"

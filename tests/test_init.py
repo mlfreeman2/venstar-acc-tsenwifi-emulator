@@ -213,6 +213,35 @@ async def test_resend_last_packet_never_broadcast(
     await hass.async_block_till_done()
 
 
+@pytest.mark.parametrize(
+    "entry_data",
+    [{}, {"mac_prefix": "aaaaaaaaaa"}],
+    ids=["missing-key", "stale-prefix"],
+)
+async def test_setup_backfills_mac_prefix_into_entry_data(
+    hass: HomeAssistant, hass_storage: dict, entry_data: dict
+) -> None:
+    """entry.data must end up matching storage: the companion listener
+    integration's "ignore locally-emulated sensors" filter reads it from there.
+    """
+    seeded_storage(hass_storage, sensors={})
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        data=entry_data,
+        title="Venstar ACC-TSENWIFI Emulator",
+    )
+    entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(entry.entry_id)
+    await hass.async_block_till_done()
+
+    assert entry.data["mac_prefix"] == GOLDEN_MAC_PREFIX
+    # Storage (the broadcast source of truth) is untouched.
+    assert entry.runtime_data.storage.mac_prefix == GOLDEN_MAC_PREFIX
+
+    await hass.config_entries.async_unload(entry.entry_id)
+    await hass.async_block_till_done()
+
+
 async def test_unload_stops_coordinators_and_removes_services(
     hass: HomeAssistant, hass_storage: dict
 ) -> None:

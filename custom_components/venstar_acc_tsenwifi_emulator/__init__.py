@@ -47,6 +47,15 @@ async def async_setup_entry(hass: HomeAssistant, entry: VenstarConfigEntry) -> b
     storage = VenstarEmulatorStorage(hass)
     await storage.async_load(mac_prefix=entry.data.get("mac_prefix"))
 
+    # Storage is the source of truth for the broadcast MAC prefix, but the
+    # companion listener integration's "ignore locally-emulated sensors" filter
+    # reads it from entry.data. Backfill entries that predate the key or that
+    # recorded a different prefix than the pre-existing storage (migration path).
+    if entry.data.get("mac_prefix") != storage.mac_prefix:
+        hass.config_entries.async_update_entry(
+            entry, data={**entry.data, "mac_prefix": storage.mac_prefix}
+        )
+
     entry.runtime_data = VenstarRuntimeData(storage=storage)
 
     # Initialize coordinators for each enabled sensor
