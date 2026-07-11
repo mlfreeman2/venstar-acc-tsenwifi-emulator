@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
+# Installs the test environment. requirements-dev.txt (a runnable Home
+# Assistant at the documented minimum version) pins a homeassistant that
+# conflicts with the exact version PHACC brings in, so it is not installed
+# here — swap it in manually when you need scripts/develop on the real
+# minimum. PHACC's homeassistant includes the `hass` CLI, so scripts/develop
+# works either way (just against PHACC's pinned HA version).
 set -e
 cd "$(dirname "$0")/.."
 
 python3 -m pip install --upgrade pip
-python3 -m pip install -r requirements-dev.txt
+python3 -m pip install -r requirements-test.txt

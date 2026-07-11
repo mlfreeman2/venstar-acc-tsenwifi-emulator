@@ -4,6 +4,8 @@
 
 The Venstar ACC-TSENWIFI Emulator integration includes comprehensive debug logging to help troubleshoot issues, especially with protobuf packet generation and UDP broadcasting.
 
+For a quick snapshot without any configuration, download the integration's **diagnostics** first (Settings → Devices & Services → Venstar ACC-TSENWIFI Emulator → ⋮ → Download diagnostics): it captures the sensor roster, sequence numbers, coordinator state, and what each source entity currently reports in one JSON file. Reach for debug logging when you need to watch broadcasts happen in real time or compare packet bytes.
+
 ## Enabling Debug Logging
 
 Add this to your Home Assistant `configuration.yaml`:

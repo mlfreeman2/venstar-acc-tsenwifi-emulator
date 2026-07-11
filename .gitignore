@@ -27,6 +27,7 @@ ENV/
 .pytest_cache/
 .coverage
 htmlcov/
+.ruff_cache/
 
 # HA dev instance created by scripts/develop
 config/
