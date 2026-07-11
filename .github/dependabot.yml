@@ -8,11 +8,11 @@ updates:
       # Pinned to match the Home Assistant version running on all deployments.
       # Bump this manually when those upgrade.
       - dependency-name: "homeassistant"
-      # Home Assistant hard-pins protobuf (6.32.0 in HA 2026.4), so major
-      # bumps (7.x) can never be installed and just create noise. Minor/patch
-      # 6.x updates are still allowed through.
+      # Home Assistant hard-pins protobuf to an exact version (==6.32.0 in HA
+      # 2026.4), so ANY bump above it — major or minor — is unsatisfiable
+      # against the pinned homeassistant. Ignore protobuf entirely; HA controls
+      # this version. Revisit when the pinned HA version changes.
       - dependency-name: "protobuf"
-        update-types: ["version-update:semver-major"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
