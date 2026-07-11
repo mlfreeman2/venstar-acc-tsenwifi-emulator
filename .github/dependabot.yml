@@ -4,6 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      # Pinned to match the Home Assistant version running on all deployments.
+      # Bump this manually when those upgrade.
+      - dependency-name: "homeassistant"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
