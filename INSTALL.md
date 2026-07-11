@@ -6,7 +6,7 @@ This guide covers installing the Venstar ACC-TSENWIFI Emulator integration into 
 
 ## Prerequisites
 
-- Home Assistant 2025.7.1 or newer (developed and validated against 2026.4.x)
+- Home Assistant 2026.4.4 or newer (the version this integration is developed and validated against)
 - Venstar ColorTouch thermostat on the same network/VLAN
 - Temperature sensor entities already configured in Home Assistant
 
@@ -284,7 +284,7 @@ This JSON file contains:
 
 ### Integration won't load?
 
-1. **Check Home Assistant version**: Must be 2025.7.1+. On older versions the generated protobuf code refuses to load (`VersionError` mentioning "gencode" and "runtime" versions in the log) because HA ships an older `protobuf` runtime
+1. **Check Home Assistant version**: Must be 2026.4.4+. On older versions the generated protobuf code refuses to load (`VersionError` mentioning "gencode" and "runtime" versions in the log) because HA ships an older `protobuf` runtime
 2. **Check protobuf**: Ensure `protobuf/sensor_message_pb2.py` and `protobuf/__init__.py` exist
 3. **Check logs**: Look for import errors
 4. **Reinstall**: Delete and re-copy files

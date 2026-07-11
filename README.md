@@ -29,11 +29,11 @@ This integration was previously named **Venstar Translator** with the HA domain 
 
 ## Requirements
 
-- Home Assistant 2025.7.1 or newer (developed and validated against 2026.4.x)
+- Home Assistant 2026.4.4 or newer (the version this integration is developed and validated against)
 - Venstar ColorTouch thermostat on the **same VLAN/broadcast domain** as Home Assistant
 - Temperature sensor entities already configured in Home Assistant
 
-The minimum Home Assistant version matters: the bundled protobuf code requires the `protobuf` 6.31.1+ runtime that Home Assistant 2025.7.1 started shipping, and the options flow uses the `config_entry` property that older Home Assistant versions handled differently.
+The minimum Home Assistant version matters: the bundled protobuf code requires a recent `protobuf` runtime (Home Assistant 2026.4 ships 6.32.0), and the options flow uses the `config_entry` property that older Home Assistant versions handled differently.
 
 ## Installation
 
