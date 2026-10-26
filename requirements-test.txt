@@ -4,12 +4,10 @@
 # version it was built against, so installing it brings the matching
 # `homeassistant` in automatically. Keep the two in sync via this single pin.
 #
-# NOTE: the newest PHACC release currently targets homeassistant 2026.2.3, one
-# minor below the 2026.4.4 documented as this integration's minimum. No PHACC
-# release for 2026.4.x exists yet, so the automated tests run against 2026.2.3.
-# The integration uses no 2026.3/2026.4-only APIs, so this is a safe floor for
-# CI; bump the PHACC pin once a 2026.4.x-matching release ships.
-pytest-homeassistant-custom-component==0.13.316
+# PHACC 0.13.325 pins Home Assistant 2026.4.4, matching the development and
+# supported minimum version. HA requires Python >=3.14.2; CI and the
+# devcontainer use Python 3.14. Update this pin together with requirements-dev.txt.
+pytest-homeassistant-custom-component==0.13.325
 
 # Integration runtime dependency (manifest requirements are not auto-installed
 # in the test environment).
