@@ -1,8 +1,8 @@
 # Development environment: a runnable Home Assistant plus the integration's
 # runtime dependency (manifest requirements are not auto-installed in dev).
 #
-# NOTE: this pin conflicts with the exact homeassistant version the test
-# harness (requirements-test.txt) brings in via its PHACC pin — install one or
-# the other into a venv, not both at once. See scripts/setup.
-homeassistant>=2026.4.4
+# Keep this version aligned with the PHACC pin in requirements-test.txt.
+# scripts/setup installs the test environment, which includes this same HA
+# version and can also run scripts/develop. Requires Python >=3.14.2.
+homeassistant==2026.4.4
 protobuf>=6.31.1,<8

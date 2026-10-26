@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-# Installs the test environment. requirements-dev.txt (a runnable Home
-# Assistant at the documented minimum version) pins a homeassistant that
-# conflicts with the exact version PHACC brings in, so it is not installed
-# here — swap it in manually when you need scripts/develop on the real
-# minimum. PHACC's homeassistant includes the `hass` CLI, so scripts/develop
-# works either way (just against PHACC's pinned HA version).
+# Installs the test environment on Python >=3.14.2. The test harness brings
+# Home Assistant 2026.4.4, matching requirements-dev.txt, and includes the
+# `hass` CLI used by scripts/develop.
 set -e
 cd "$(dirname "$0")/.."
 

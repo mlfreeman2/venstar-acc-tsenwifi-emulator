@@ -9,6 +9,9 @@ updates:
       # (declared in hacs.json and requirements-dev.txt), not something to bump
       # automatically — ignore homeassistant itself.
       - dependency-name: "homeassistant"
+      # The test harness pins HA transitively; upgrade it with the selected
+      # development HA version, not independently.
+      - dependency-name: "pytest-homeassistant-custom-component"
       # Home Assistant hard-pins protobuf to an exact version (2026.4.x ships
       # protobuf==6.32.0), so ANY bump above it — major or minor — is
       # unsatisfiable against the pinned homeassistant. Ignore protobuf

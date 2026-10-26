@@ -104,6 +104,11 @@ See [DEBUG_LOGGING.md](DEBUG_LOGGING.md) for details.
 
 ## Development
 
+Development and tests use Python 3.14 (at least 3.14.2) and Home Assistant 2026.4.4.
+`scripts/setup` installs the pinned test harness and HA; run `python -m pytest tests/`
+for the test suite. When updating an existing checkout, rebuild the devcontainer to
+pick up the Python version change.
+
 A devcontainer is included: open this repository in VS Code, reopen in container, and run `scripts/develop` to launch a Home Assistant instance (port 8123) with this integration mounted. Note that UDP broadcasts stay inside the container's network namespace unless you run with host networking, which is fine for protocol-level development (a listener in the same container sees them) but won't reach a physical thermostat.
 
 ## Related Projects
